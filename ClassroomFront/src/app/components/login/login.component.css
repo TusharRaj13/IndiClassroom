@@ -1,0 +1,11 @@
+.main{
+  margin:50px;
+}
+.btn-google {
+  background-color: #dd4b39;
+  color: white;
+}
+.btn-logout {
+  background-color: #424242;
+  color:white;
+}

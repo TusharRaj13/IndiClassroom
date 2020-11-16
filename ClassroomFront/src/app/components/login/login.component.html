@@ -1,0 +1,20 @@
+<!--<p>login works!</p>-->
+<div class="container">
+  <div class="main">
+    <button class="btn btn-google" (click)="onGoogleLogin()">
+      <i class="fa fa-google fa-fw"></i> Login with Google+
+    </button>
+    <button class="btn btn-logout" (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+
+  <div *ngIf="loggedIn">
+    <img class="rounded" src="{{ user.photoUrl }}">
+    <div>
+      <h4>{{ user.name }}</h4>
+      <p>{{ user.email }}</p>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+{
+  "name": "classroomapi",
+  "version": "1.0.0",
+  "description": "Project IndiClassroom backend api node express mongoconnection",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon app",
+    "start": "cross-env NODE_ENV=production node app"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "*",
+    "mongoose": "^5.10.14"
+  },
+  "author": "Tushar Raj",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.6"
+  }
+}
