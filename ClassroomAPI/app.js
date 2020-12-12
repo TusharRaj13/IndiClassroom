@@ -3,6 +3,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const connectDB = require('./config/db')
+const { v4: uuidv4 } = require('uuid');
 
 //Connecting to MongoDB
 connectDB()
