@@ -3,6 +3,7 @@ const http = require('https');
 const app_config = require('../config/config');
 const User = require('../models/User');
 const Classroom = require('../models/Classroom');
+const Quiz = require('../models/Quiz');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const router = express.Router();
 
@@ -192,6 +193,63 @@ router.post('/join_invidecode/:code', (req,res) => {
             res.end(JSON.stringify({success: false, msg: "Class not found"}));
     })
 })
+
+//Create test (method: post, path:/api/create_quiz, body- classinfo as json)
+//Body JSON Example => {"class_id": <classid>, "data": <complete_test_model>}
+// Test model => {"name": <testname>, "startdate": <date&time>, "duration": <time in minutes>, "buffertime": <time-in-minutes>, "questions": <array of question model>}
+// Question model => {"question": <question-text>, "options": <array of options model>}
+// Option model => {"option": <answer-text>, "is_answer": <true/false>}
+router.post('/create_quiz', (req,res) => {
+    console.log('/create_quiz');
+    let json = req.body;
+    let id = uuidv4();
+    var question_list = json["data"]["questions"];
+    var question_model = new Array();
+    question_list.array.forEach(element => {
+        var option_list = element["options"];
+        var option_model = new Array();
+        var answer_model = new Array();
+        option_list.array.forEach(element1 => {
+            var op_id = (Math.random()*200000000000).toString(36).split('.')[0];
+            option_model.push({ option_id: op_id, option_text: element1.option });
+            if(element1.is_answer)
+                answer_model.push({ option_id: op_id });
+        });
+        var question = {
+            question_id : (Math.random()*200000000000).toString(36).split('.')[0],
+            question_text : element["question"],
+            question_type : (answer_model.length > 1)?1:0,
+            question_options : option_model,
+            question_answers : answer_model
+        }
+        question_model.push(question);
+    });
+    var quiz_item = {
+        quiz_id: id,
+        quiz_classid: json["class_id"],
+        quiz_name: json["data"]["name"],
+        quiz_start_datetime: json["data"]["startdate"],
+        quiz_duration: json["data"]["duration"],
+        quiz_buffer_time: json["data"]["buffertime"],
+        quiz_questions: question_model
+    }
+    Quiz.create(quiz_item);
+    res.end(JSON.stringify({success: true, msg: "Quiz created", quizid : id, callback: "/quiz/"+id, data: (quiz_item) }));
+});
+
+//Get Quiz (method:get, path: /api/get_quiz/<id>, body: not required)
+router.get('/get_quiz/:id', (req,res) => {
+    let id = req.params.id;
+    Quiz.findOne({quiz_id: id}, (err, doc) =>{
+        if(doc)
+            res.end(JSON.stringify({success:true, msg:"Quiz found", data: doc}));
+        else
+            res.end(json.stringify({success:false, msg:"Quiz not found"}));
+    });
+});
+
+
+
 
 //RandomE testing uuid
 router.post('/test', (req, res) => {
