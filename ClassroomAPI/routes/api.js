@@ -248,8 +248,20 @@ router.get('/get_quiz/:id', (req,res) => {
     });
 });
 
+//Create Post in notice board (method:post, path:/api/create_notice, body: google_id & class_id)
+//Body JSON Example => { "userid": <googleid>, "classid": <classid> }
+router.post('/create_notice', (req,res) => {
+   let json = req.body;
+   var classid = json["classid"];
+   var userid = json["userid"];
+   
+});
 
+//Create Class feed (method:post, path:/api/create_post, body: google_id & class_id)
+//Body JSON Example => { "userid": <googleid>, "classid": <classid> }
+router.post('/create_post', (req,res) => {
 
+});
 
 //RandomE testing uuid
 router.post('/test', (req, res) => {
