@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ClassroomComponent } from './components/classroom/classroom.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -7,6 +9,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
   { path:"", component: HomeComponent },
   { path:"login", component: LoginComponent },
+  { path:"dashboard", component: DashboardComponent},
+  { path:"class/:id", component: ClassroomComponent},
   { path:"**", component:PageNotFoundComponent }
 ];
 

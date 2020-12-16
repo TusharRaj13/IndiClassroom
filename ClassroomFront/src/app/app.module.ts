@@ -11,13 +11,18 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BackendAuthService } from './services/backend-auth.service';
+import { ClassroomComponent } from './components/classroom/classroom.component';
+import { ClassroomFetcherService } from './services/classroom-fetcher.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ClassroomComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { BackendAuthService } from './services/backend-auth.service';
         ]
       } as SocialAuthServiceConfig,
     },
-    BackendAuthService
+    BackendAuthService,
+    ClassroomFetcherService
   ],
   bootstrap: [AppComponent]
 })
