@@ -12,6 +12,7 @@
     "cors": "^2.8.5",
     "express": "*",
     "mongoose": "^5.10.14",
+    "socket.io": "^3.0.4",
     "uuid": "^8.3.1"
   },
   "author": "Tushar Raj",

@@ -4,6 +4,8 @@ const app_config = require('../config/config');
 const User = require('../models/User');
 const Classroom = require('../models/Classroom');
 const Quiz = require('../models/Quiz');
+const Notice = require('../models/Notice');
+const Feed = require('../models/Post');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const router = express.Router();
 
@@ -249,18 +251,72 @@ router.get('/get_quiz/:id', (req,res) => {
 });
 
 //Create Post in notice board (method:post, path:/api/create_notice, body: google_id & class_id)
-//Body JSON Example => { "userid": <googleid>, "classid": <classid> }
+//Body JSON Example => { "userid": <googleid>, "classid": <classid>, "text": <notice text>, "expiry_date": <notice expiry date>, "type": <true/false> }
 router.post('/create_notice', (req,res) => {
    let json = req.body;
    var classid = json["classid"];
    var userid = json["userid"];
-   
+   const newNotice = {
+    notice_id: uuidv4(),   
+    notice_classid: classid,
+    notice_useid: userid,
+    notice_expiry: json["expiry_date"],
+    notice_text: json["text"],
+    notice_type: json["type"]          
+   };
+
+   Notice.create(newNotice);
+   res.end(JSON.stringify({success: true, msg: "Notice created", data: newNotice}));
+});
+
+//Get notice of notice board of class (method: get, path:/api/get_notice, body: not required)
+router.get('/get_notice/:id', (req, res) => {
+    let classid = req.params.id;
+    Notice.find({ notice_classid: classid }, (err, doc) => {
+        res.end(JSON.stringify({success: true, data:doc}));
+    });
+});
+
+//Automated Method for realtime notification[Ignore this]
+router.put('/create_notice', (req,res) => {
+    
 });
 
 //Create Class feed (method:post, path:/api/create_post, body: google_id & class_id)
-//Body JSON Example => { "userid": <googleid>, "classid": <classid> }
+//Body JSON Example => { "userid": <googleid>, "classid": <classid>, "text": <post-text> }
 router.post('/create_post', (req,res) => {
+    let json = req.body;
+    let id = uuidv4();
+    const newFeed = {
+        post_id: id,
+        post_text: json["text"],
+        post_classid: json["classid"],
+        post_userid: json["userid"]
+    }
+    Feed.create(newFeed);
+    res.end(JSON.stringify({success: true, msg:"Feed Created", data: newFeed}));
+});
 
+//Create Feed reply (method:post, path:/api/create_post_reply, body: postid, googleid)
+//Body JSON Example => { "userid": <googleid>, "postid": <postid>, "text": <post_text> }
+router.post('/create_post_reply', (req, res) => {
+    let json = req.body;
+    let id = uuidv4();
+    const newFeedReply = {
+        post_reply_id: id,
+        post_reply_text: json["text"],
+        post_reply_userid: json["userid"]
+    }
+    Feed.updateOne({ post_id: json["postid"] }, { $push: { post_replies: newFeedReply } });
+    res.end(JSON.stringify({success: true, msg:"Reply created", data: newFeedReply}));
+});
+
+//Get Class feed (method:get, path:/api/get_feeds/<classid>, body: not required)
+router.get('/get_feeds/:id', (req,res) =>{
+    let id = req.params.id;
+    Feed.find({ post_classid: id }, (err, doc) => {
+        res.end(JSON.stringify({success: true, msg: "All feeds", data: doc}));
+    });
 });
 
 //RandomE testing uuid
