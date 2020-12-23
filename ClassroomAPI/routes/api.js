@@ -6,6 +6,7 @@ const Classroom = require('../models/Classroom');
 const Quiz = require('../models/Quiz');
 const Notice = require('../models/Notice');
 const Feed = require('../models/Post');
+const Attendance = require('../models/Attendance');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const router = express.Router();
 
@@ -316,6 +317,77 @@ router.get('/get_feeds/:id', (req,res) =>{
     let id = req.params.id;
     Feed.find({ post_classid: id }, (err, doc) => {
         res.end(JSON.stringify({success: true, msg: "All feeds", data: doc}));
+    });
+});
+
+//Create Attendance (method:post, path:/api/create_attendance/<classid>, body: date, list of student id)
+//JSON Body Example -> { "date" : <date>, "data": [<present student ids>] }
+router.post('/create_attendance/:id', async (req,res) => {
+    let id = req.params.id;
+    let json = req.body;
+    let uid = uuidv4();
+    let classsheet = await Attendance.findOne({ attend_classid: id }, (err,doc) => {
+
+    });
+    if(classsheet) //Already in DB
+    {
+        const newSheet = {
+            attend_id: uid,
+            attend_list: json["data"]
+        };
+        Attendance.updateOne({ attend_classid: id }, { $push: { attend_days : newSheet } });
+        res.end(JSON.stringify({success: true, msg: "Added Sheet" }));
+    }
+    else
+    {
+        const newClassSheet = {
+            attend_classid: id,
+            attend_days: [{
+                attend_id: uid,
+                attend_list: json["data"]
+            }]
+        }
+        Attendance.create(newClassSheet);
+        res.end(JSON.stringify({success: true, msg: "Created Sheet"}));        
+    }
+    
+});
+
+//Get Attendance (method:get, path:/api/get_attendance/<classid>, body: not required)
+router.get('/get_attendance/:id', (req,res) => {
+    let id = req.params.id;
+    Attendance.findOne({attend_classid: id}, (err,doc)=>{
+        if(doc)
+            res.end(JSON.stringify({success: true, msg: "Class found", data: doc}));
+        else
+            res.end(JSON.stringify({success: false, msg: "Class not found"}));
+    });
+});
+
+//Get Attendance wrt to student (method:get, path:/api/get_student_attendance/<classid>, body: userid)
+//JSON body example - { "userid": <googleid> }
+router.get('/get_student_attendance/:id', (req,res) => {
+    let id = req.params.id;
+    let json = req.body;
+    Attendance.findOne({attend_classid: id}, (err,doc)=>{
+        if(doc)
+        {
+            var student_attendance = new Array();
+            var days = doc["attend_days"];
+            days.array.forEach(element => {
+                var sheet = element["attend_list"];
+                var found = sheet.find((element1)=>{
+                    return element1 == json["userid"];
+                });
+                if(found)
+                    student_attendance.push({ date: element["attend_date"], is_present: true });
+                else
+                    student_attendance.push({ date: element["attend_date"], is_present: false });
+            });
+            res.end(JSON.stringify({success: true, msg:"Student attendance", data:student_attendance}));
+        }
+        else
+            res.end(JSON.stringify({success:false, msg:"Class not found"}));
     });
 });
 
