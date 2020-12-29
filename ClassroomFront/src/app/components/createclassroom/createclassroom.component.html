@@ -1,11 +1,11 @@
-<form>
+<form #form (submit)="addClassroom(name.value, subject.value)">
 
-<input type="text" [(ngModel)]= "name" name="name">
+<input type="text" name="name" #name>
 
-<input type="text"[(ngModel)]= "subject" subject="subject">
+<input type="text" name="subject" #subject>
 
-<input type="button">
-
+<input type="submit">
 
 
 </form>
+

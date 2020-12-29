@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateclassroomComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addClassroom(name, subject){
+    console.log(name + " " + subject);
   }
 
 }
