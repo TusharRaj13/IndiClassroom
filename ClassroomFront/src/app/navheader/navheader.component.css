@@ -1,6 +1,5 @@
-.main {
-    text-align: center;
-    margin: 50px;
+#main {
+    display: inline-block;
 }
 
 .btn-google {

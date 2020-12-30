@@ -1,0 +1,10 @@
+<nav id="main">
+    <button class="btn btn-primary" type="button">Home</button>
+    <button class="btn btn-primary" type="button">About Us</button>
+    <button class="btn btn-google" (click)="onGoogleLogin()" *ngIf="!loggedIn">
+        <i class="fa fa-google fa-fw"></i> Login with Google+
+      </button>
+    <button class="btn btn-logout" (click)="onLogout()" *ngIf="loggedIn">
+        Logout
+      </button>
+</nav>
