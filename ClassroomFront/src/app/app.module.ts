@@ -15,6 +15,8 @@ import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ClassroomFetcherService } from './services/classroom-fetcher.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateclassroomComponent } from './components/createclassroom/createclassroom.component';
+import { NoticeboardComponent } from './components/noticeboard/noticeboard.component';
+import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CreateclassroomComponent } from './components/createclassroom/createcla
     PageNotFoundComponent,
     ClassroomComponent,
     DashboardComponent,
-    CreateclassroomComponent
+    CreateclassroomComponent,
+    NoticeboardComponent,
+    JoinclassroomComponent
   ],
   imports: [
     BrowserModule,
