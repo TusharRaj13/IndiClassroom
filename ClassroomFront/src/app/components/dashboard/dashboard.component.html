@@ -1,7 +1,14 @@
-<p>dashboard works!</p>
-<ul *ngFor="let c of user.data.classes">
-  <div class="classobject">
-    <h1>{{ c.class_name }}</h1>
-    <p> {{ c.class_subject }} </p>
-  </div>
-</ul>
+<div>
+    <ul>
+        <div class="classobject" *ngFor="let c of user.data.classes">
+            <a routerLink="/class/{{c.class_id}}">
+                <h1>{{ c.class_name }}</h1>
+                <p> {{ c.class_subject }} </p>
+            </a>
+        </div>
+    </ul>
+</div>
+<div>
+    <button class="btn btn-dark" type="button">Create</button>
+    <span><button class="btn btn-dark" type="button">Join</button></span>
+</div>
