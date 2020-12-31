@@ -1,5 +1,13 @@
-#main {
-    display: inline-block;
+
+
+#navleft{
+  display: block;
+  float:left;
+}
+
+#navright{
+  display: block;
+  float: right;
 }
 
 .btn-google {
