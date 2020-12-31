@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit {
       if(this.loggedIn)
       {
         this.backendAuthService.postApiLogin(user.idToken).subscribe(
-          data => {console.log(data); this.backendAuthService.userInfo = data; this.router.navigateByUrl('/dashboard'); },
+          data => {
+            console.log(data);
+            this.backendAuthService.userInfo = data;
+            this.router.navigateByUrl('/dashboard'); },
           err => console.error(err)
         );
       }

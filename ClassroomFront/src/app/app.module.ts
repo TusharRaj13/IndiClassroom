@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { SocialLoginModule, SocialAuthServiceConfig, SocialAuthService } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,11 @@ import { BackendAuthService } from './services/backend-auth.service';
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ClassroomFetcherService } from './services/classroom-fetcher.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreateclassroomComponent } from './components/createclassroom/createclassroom.component';
+import { NoticeboardComponent } from './components/noticeboard/noticeboard.component';
+import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom.component';
 import { NavheaderComponent } from './components/navheader/navheader.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +28,17 @@ import { NavheaderComponent } from './components/navheader/navheader.component';
     PageNotFoundComponent,
     ClassroomComponent,
     DashboardComponent,
+    CreateclassroomComponent,
+    NoticeboardComponent,
+    JoinclassroomComponent,
     NavheaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {
