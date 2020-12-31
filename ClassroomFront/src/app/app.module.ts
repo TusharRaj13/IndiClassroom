@@ -14,6 +14,7 @@ import { BackendAuthService } from './services/backend-auth.service';
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ClassroomFetcherService } from './services/classroom-fetcher.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavheaderComponent } from './components/navheader/navheader.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     PageNotFoundComponent,
     ClassroomComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavheaderComponent
   ],
   imports: [
     BrowserModule,

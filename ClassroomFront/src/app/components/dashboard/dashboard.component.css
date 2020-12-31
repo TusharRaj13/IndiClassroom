@@ -1,3 +1,17 @@
-.classobject{
-  border: 5px solid red;
+.head {
+    border: 1px solid darkgrey;
+}
+
+#c1 {
+    text-decoration-color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif
+}
+
+#j1 {
+    text-decoration-color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.classobject {
+    border: 5px solid red;
 }

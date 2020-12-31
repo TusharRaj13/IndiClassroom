@@ -1,0 +1,18 @@
+<nav class="navbar bg-dark">
+  <div id="navleft">
+    <a class="navbar-brand"><h5>INDICLASSROOM</h5></a>
+    <button class="btn btn-primary">Home</button>
+    <button class="btn btn-primary">About Us</button>
+  </div>
+  <!--<div id="navcenter">
+    <button class="btn btn-primary">Create/Join Classroom</button>
+  </div>-->
+  <div id="navright">
+    <button class="btn btn-google" (click)="onGoogleLogin()" *ngIf="!loggedIn">
+        <i class="fa fa-google fa-fw"></i> Login with Google+
+    </button>
+    <button class="btn btn-logout" (click)="onLogout()" *ngIf="loggedIn">
+        Logout
+    </button>
+  </div>
+</nav>
