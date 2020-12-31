@@ -1,6 +1,13 @@
-.main {
-    text-align: center;
-    margin: 50px;
+
+
+#navleft{
+  display: block;
+  float:left;
+}
+
+#navright{
+  display: block;
+  float: right;
 }
 
 .btn-google {

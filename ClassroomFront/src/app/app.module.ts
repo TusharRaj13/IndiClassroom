@@ -17,6 +17,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateclassroomComponent } from './components/createclassroom/createclassroom.component';
 import { NoticeboardComponent } from './components/noticeboard/noticeboard.component';
 import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom.component';
+import { NavheaderComponent } from './components/navheader/navheader.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom
     DashboardComponent,
     CreateclassroomComponent,
     NoticeboardComponent,
-    JoinclassroomComponent
+    JoinclassroomComponent,
+    NavheaderComponent
   ],
   imports: [
     BrowserModule,
