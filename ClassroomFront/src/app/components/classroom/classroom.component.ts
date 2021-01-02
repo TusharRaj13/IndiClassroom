@@ -34,7 +34,11 @@ export class ClassroomComponent implements OnInit {
       }
     );
 
-    this.classinfo=JSON.parse('classinfo');
+    this.classinfo=JSON.parse(localStorage.getItem('classinfo'));
+  }
+
+  ngOnDestroy(): void{
+    localStorage.removeItem('classinfo');
   }
 
 }
