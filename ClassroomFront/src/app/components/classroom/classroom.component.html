@@ -1,16 +1,25 @@
-<nav>
-    <a class="btn btn-dark" routerLink="./assignment">Assignment</a>
-    <a class="btn btn-dark" routerLink="./quiz">Quiz</a>
-    <a class="btn btn-dark" routerLink="./attendance">Attendance</a>
-</nav>
+<div>
+    <nav>
+        <a class="btn btn-dark" routerLink="./assignment">Assignment</a>
+        <a class="btn btn-dark" routerLink="./quiz">Quiz</a>
+        <a class="btn btn-dark" routerLink="./attendance">Attendance</a>
+    </nav>
 
-<div>
-    <h4>Notice</h4>
-</div>
-<div>
-    <h4>Feeds</h4>
-</div>
-<div>
-    <h4>Members</h4>
-
+    <div>
+        <h4>Notice</h4>
+    </div>
+    <div>
+        <h4>Feeds</h4>
+    </div>
+    <div>
+        <h4>Members</h4>
+        <div class="memberobj" *ngFor="let c of classinfo.class_teacher">
+            <img src="{{ c.userimage }}">
+            <h5>{{ c.username }}</h5>
+        </div>
+        <div class="memberobj" *ngFor="let c of classinfo.class_students">
+            <img src="{{ c.userimage }}">
+            <h5>{{ c.username }}</h5>
+        </div>
+    </div>
 </div>
