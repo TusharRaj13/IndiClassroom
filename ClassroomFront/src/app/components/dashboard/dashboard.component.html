@@ -1,15 +1,18 @@
-<nav class="head">
-    <button class="btn btn-dark" type="button" id="c1">Create</button>
-    <button class="btn btn-dark" type="button" id="j1">Join</button>
-</nav>
-
 <div>
-    <ul>
-        <div class="classobject" *ngFor="let c of user.data.classes">
-            <a routerLink="/class/{{c.class_id}}">
-                <h1>{{ c.class_name }}</h1>
-                <p> {{ c.class_subject }} </p>
-            </a>
-        </div>
-    </ul>
+  <div class="head">
+      <button class="btn btn-dark" type="button" id="c1">Create</button>
+      <button class="btn btn-dark" type="button" id="j1">Join</button>
+  </div>
+
+  <div>
+      <div class="classcollection">
+          <div class="classobject" *ngFor="let c of user.classes">
+              <a routerLink="/class/{{c.class_id}}">
+                  <h3>{{ c.class_name }}</h3>
+                  <h5> {{ c.class_subject }} </h5>
+              </a>
+          </div>
+      </div>
+  </div>
 </div>
+

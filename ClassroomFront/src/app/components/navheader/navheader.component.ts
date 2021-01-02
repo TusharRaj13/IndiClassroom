@@ -12,7 +12,9 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavheaderComponent implements OnInit {
 
   user: SocialUser;
+  username: string;
   loggedIn: boolean;
+  socialLoggedIn: boolean;
 
   constructor(private authService: SocialAuthService,
     private backendAuthService: BackendAuthService, private router:Router) {
@@ -24,9 +26,17 @@ export class NavheaderComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    this.loggedIn = localStorage.getItem('user') != null;
+    if(this.loggedIn)
+      this.username = JSON.parse(localStorage.getItem('user'))["username"];
+    else
+      localStorage.removeItem('user');
+
     this.authService.authState.subscribe((user) => {
       this.user = user;
       //console.log(user);
+      this.socialLoggedIn = (user != null);
       this.loggedIn = (user != null);
       if(this.loggedIn)
       {
@@ -34,7 +44,9 @@ export class NavheaderComponent implements OnInit {
           data => {
             //console.log(data);
             this.backendAuthService.userInfo = data;
-            this.router.navigateByUrl('/dashboard')
+            localStorage.setItem('user', JSON.stringify(data["data"]));
+            this.username = JSON.parse(localStorage.getItem('user'))["username"];
+            this.router.navigateByUrl('/dashboard');
           },
           err => console.error(err)
         );
@@ -42,6 +54,7 @@ export class NavheaderComponent implements OnInit {
       else
       {
         this.router.navigateByUrl('');
+        localStorage.removeItem('user');
       }
     });
   }
@@ -52,13 +65,12 @@ export class NavheaderComponent implements OnInit {
   }
 
   onLogout(){
-    if (this.loggedIn) {
+    if (this.socialLoggedIn) {
       this.authService.signOut();
-      //this.user = null;
-      //this.loggedIn = false;
-      //this.router.navigateByUrl('/');
     }
-
+    this.loggedIn = false;
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('');
   }
 
 }

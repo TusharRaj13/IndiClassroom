@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ClassroomFetcherService } from '../../services/classroom-fetcher.service';
 
 @Component({
   selector: 'app-classroom',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassroomComponent implements OnInit {
 
-  constructor() { }
+  classid:string;
+  classinfo:any;
+
+  constructor(private classroom:ClassroomFetcherService,
+    private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params => {
+      console.log(params["id"]);
+      this.classid = params["id"];
+    });
+
+    this.classroom.getClassroomInfo(this.classid).subscribe(
+      data => {
+        if(data['success']){
+          console.log(data['data']);
+          localStorage.setItem('classinfo', JSON.stringify(data['data']));
+        }
+        else
+        {
+          console.log(data['msg']);
+        }
+      }
+    );
+
+    this.classinfo=JSON.parse('classinfo');
   }
 
 }
