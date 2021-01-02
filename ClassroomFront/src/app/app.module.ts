@@ -18,6 +18,8 @@ import { CreateclassroomComponent } from './components/createclassroom/createcla
 import { NoticeboardComponent } from './components/noticeboard/noticeboard.component';
 import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom.component';
 import { NavheaderComponent } from './components/navheader/navheader.component';
+import { AssingmentComponent } from './components/assingment/assingment.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { NavheaderComponent } from './components/navheader/navheader.component';
     CreateclassroomComponent,
     NoticeboardComponent,
     JoinclassroomComponent,
-    NavheaderComponent
+    NavheaderComponent,
+    AssingmentComponent,
+    AttendanceComponent
   ],
   imports: [
     BrowserModule,
