@@ -8,6 +8,7 @@
     <button class="btn btn-primary">Create/Join Classroom</button>
   </div>-->
   <div id="navright">
+    <h5 class="navbar-brand" *ngIf="loggedIn">Welcome, {{ username }}</h5>
     <button class="btn btn-google" (click)="onGoogleLogin()" *ngIf="!loggedIn">
         <i class="fa fa-google fa-fw"></i> Login with Google+
     </button>

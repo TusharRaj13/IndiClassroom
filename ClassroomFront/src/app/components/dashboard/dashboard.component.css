@@ -1,17 +1,32 @@
 .head {
-    border: 1px solid darkgrey;
+    display: flex;
+    justify-content:center;
+    height: 4em;
+    border-bottom: 2px solid gray;
+    align-items: center;
 }
 
-#c1 {
+#c1, #j1 {
     text-decoration-color: whitesmoke;
-    font-family: 'Times New Roman', Times, serif
+    font-family: 'Times New Roman', Times, serif;
+    width: 100px;
 }
 
-#j1 {
-    text-decoration-color: whitesmoke;
-    font-family: 'Times New Roman', Times, serif
+.classcollection{
+  display: flex;
+  flex-direction:row;
 }
 
 .classobject {
-    border: 5px solid red;
+    border: 2px solid red;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-items: center;
+    min-height: 5em;
+}
+
+.classobject a{
+  text-decoration: none;
+
 }

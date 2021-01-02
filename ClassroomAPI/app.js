@@ -64,9 +64,9 @@ app.get('*', (req,res) => {
 //Socket Programming
 io.on('connection', socket => {
     //socket.broadcast.emit('hi');
-    console.log('A user connected');
+    //console.log('A user connected');
     socket.on('disconnect', () =>{
-        console.log('A user disconnected');
+        //console.log('A user disconnected');
     });
 });
 
