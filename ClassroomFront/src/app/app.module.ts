@@ -20,6 +20,7 @@ import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom
 import { NavheaderComponent } from './components/navheader/navheader.component';
 import { AssingmentComponent } from './components/assingment/assingment.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
+import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
     JoinclassroomComponent,
     NavheaderComponent,
     AssingmentComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    CreatenoticeComponent
   ],
   imports: [
     BrowserModule,
