@@ -20,4 +20,24 @@ export class DashboardComponent implements OnInit {
     this.ts.setTitle('Dashboard - IndiClassroom');
   }
 
+  createClass(){
+    document.getElementById("mod1").style.display = "block";
+    //document.getElementById("body").style.filter="saturate(250%) blur(25px)";
+  }
+
+  joinClass(){
+    document.getElementById("mod2").style.display = "block";
+    //document.getElementById("body").style.filter="saturate(250%) blur(25px)";
+  }
+
+  closemod1(){
+    document.getElementById("mod1").style.display="None";
+    //document.getElementById("body").style.filter="blur(0px)";
+  }
+
+  closemod2(){
+    document.getElementById("mod2").style.display="None";
+    //document.getElementById("body").style.filter="blur(0px)";
+  }
+
 }

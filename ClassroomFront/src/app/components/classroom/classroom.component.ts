@@ -10,7 +10,8 @@ import { ClassroomFetcherService } from '../../services/classroom-fetcher.servic
 export class ClassroomComponent implements OnInit {
 
   classid:string;
-  classinfo:any;
+  infoloaded:boolean = false;
+  classinfo = { class_teacher: [], class_students: [] };
 
   constructor(private classroom:ClassroomFetcherService,
     private router:ActivatedRoute) { }
@@ -20,25 +21,39 @@ export class ClassroomComponent implements OnInit {
       console.log(params["id"]);
       this.classid = params["id"];
     });
+    if(localStorage.getItem('classinfo')!= null)
+    {
+      if(JSON.parse(localStorage.getItem('classinfo'))["class_id"] == this.classid){
+        this.infoloaded = true;
+      }
+      else
+      {
+        this.loadClassroom();
+      }
+    }else{
+      this.loadClassroom();
+    }
+  }
 
+  loadClassroom(){
     this.classroom.getClassroomInfo(this.classid).subscribe(
       data => {
         if(data['success']){
-          console.log(data['data']);
+          //console.log(data['data']);
           localStorage.setItem('classinfo', JSON.stringify(data['data']));
+          this.classinfo=JSON.parse(localStorage.getItem('classinfo'));
+          this.infoloaded = true;
         }
         else
         {
-          console.log(data['msg']);
+          alert(data['msg']);
         }
       }
     );
-
-    this.classinfo=JSON.parse(localStorage.getItem('classinfo'));
   }
 
-  ngOnDestroy(): void{
+  /*ngOnDestroy(): void{
     localStorage.removeItem('classinfo');
-  }
+  }*/
 
 }

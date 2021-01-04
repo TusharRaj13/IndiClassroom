@@ -1,7 +1,7 @@
 <div>
   <div class="head">
-      <button class="btn btn-dark" type="button" id="c1">Create</button>
-      <button class="btn btn-dark" type="button" id="j1">Join</button>
+      <button class="btn btn-dark" (click)="createClass()" id="c1">Create</button>
+      <button class="btn btn-dark" (click)="joinClass()" id="j1">Join</button>
   </div>
 
   <div>
@@ -14,5 +14,30 @@
           </div>
       </div>
   </div>
+
+  <div class="modal_container" id="mod1">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="model_title left"><h2>Create Classroom</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+      </div>
+      <div class="page_container">
+        <app-createclassroom></app-createclassroom>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal_container" id="mod2">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="left"><h2>Join Classroom</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod2()">X</button>
+      </div>
+      <div class="page_container">
+        <app-joinclassroom></app-joinclassroom>
+      </div>
+    </div>
+  </div>
+
 </div>
 
