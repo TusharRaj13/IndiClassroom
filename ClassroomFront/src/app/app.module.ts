@@ -18,7 +18,11 @@ import { CreateclassroomComponent } from './components/createclassroom/createcla
 import { NoticeboardComponent } from './components/noticeboard/noticeboard.component';
 import { JoinclassroomComponent } from './components/joinclassroom/joinclassroom.component';
 import { NavheaderComponent } from './components/navheader/navheader.component';
+import { AssingmentComponent } from './components/assingment/assingment.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
+
 
 
 @NgModule({
@@ -32,7 +36,10 @@ import { NoticeFetcherService } from './services/notice-fetcher.service';
     CreateclassroomComponent,
     NoticeboardComponent,
     JoinclassroomComponent,
-    NavheaderComponent
+    NavheaderComponent,
+    AssingmentComponent,
+    AttendanceComponent,
+    CreatenoticeComponent
   ],
   imports: [
     BrowserModule,
