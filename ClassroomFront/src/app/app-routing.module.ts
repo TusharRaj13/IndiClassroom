@@ -6,14 +6,21 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AssingmentComponent } from './components/assingment/assingment.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+
 
 const routes: Routes = [
   { path:"", component: HomeComponent },
   { path:"login", component: LoginComponent },
   { path:"dashboard", component: DashboardComponent},
-  { path:"class/:id", component: ClassroomComponent},
-  { path:"test", component: CreateclassroomComponent},
-  { path:"**", component:PageNotFoundComponent }
+  { path: "class/:id", component: ClassroomComponent },
+  { path: "class/:id/assignment", component: AssingmentComponent },
+  { path: "class/:id/attendance", component: AttendanceComponent},
+  { path: "test", component: CreateclassroomComponent },
+  { path: "about-us", component: AboutUsComponent},
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -21,3 +28,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
