@@ -21,6 +21,8 @@ import { NavheaderComponent } from './components/navheader/navheader.component';
 import { AssingmentComponent } from './components/assingment/assingment.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
+import { NoticeFetcherService } from './services/notice-fetcher.service';
+
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { CreatenoticeComponent } from './components/createnotice/createnotice.co
       } as SocialAuthServiceConfig,
     },
     BackendAuthService,
-    ClassroomFetcherService
+    ClassroomFetcherService,
+    NoticeFetcherService
   ],
   bootstrap: [AppComponent]
 })

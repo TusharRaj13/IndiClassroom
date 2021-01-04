@@ -1,15 +1,5 @@
 
 
-#navleft{
-  display: block;
-  float:left;
-}
-
-#navright{
-  display: block;
-  float: right;
-}
-
 .btn-google {
     background-color: #dd4b39;
     color: white;

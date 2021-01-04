@@ -1,0 +1,24 @@
+
+.hori-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 10px;
+}
+.memberobj{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.memberobj h5{
+  align-items: center;
+  padding-left: 10px;
+}
+
+.memberobj img{
+  max-width: 30px;
+  max-height: 30px;
+}
+

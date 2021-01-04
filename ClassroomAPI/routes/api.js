@@ -95,6 +95,7 @@ router.post('/create_classroom', (req, res) => {
     console.log('/create_classroom')
     var id = uuidv4();
     let json = req.body;
+    //console.log(json["userid"]);
     //let json = JSON.parse(body);
     const newClass  = {
         class_id: id,
@@ -104,7 +105,11 @@ router.post('/create_classroom', (req, res) => {
     }
     classcreate = Classroom.create(newClass);
     //adding class to userinfo
-    User.findOne({ googleId : json["userid"], $push : { classes : { class_id: id, class_name: json["name"], class_subject: json["subject"], is_teacher: true } }});
+    User.updateOne({ googleId : json["userid"] }, { $push : { classes : { class_id: id, class_name: json["name"], class_subject: json["subject"], is_teacher: true } }}, (err, raw) =>{
+        console.log(raw);
+        console.log(err);
+    });
+    
     console.log(newClass);
     res.end(JSON.stringify({success: true, msg: "Class created", classid : id, callback: "/class/"+id, data: (newClass) }));
 })
@@ -162,7 +167,7 @@ router.post('/join_classroom/:id', (req, res) => {
 
 //Join student to classroom via invidecode (method: post, path: /api/join_invitecode, body: student info as json body)
 //Body JSON Example => { "userid":<googleid>, "username":<username>, "userimage":<profileurl> } 
-router.post('/join_invidecode/:code', (req,res) => {
+router.post('/join_invitecode/:code', (req,res) => {
     console.log("/join_invitecode" + req.params.code);
     let code = req.params.code;
     let json = req.body;
@@ -186,7 +191,8 @@ router.post('/join_invidecode/:code', (req,res) => {
                 Classroom.updateOne({class_invitecode : code}, {$push : { class_students : { userid : json["userid"], username: json["username"], userimage: json["userimage"] }}}, (err, raw) =>{
                     console.log(err);
                 });
-                User.updateOne({userid:json["userid"]}, {$push : {classes : { class_id: doc["class_id"], class_name: doc["class_name"], class_subject: doc["class_subject"] }}}, (err,raw) =>{
+                User.updateOne({ googleId : json["userid"] }, { $push : { classes : { class_id: doc["class_id"], class_name: doc["class_name"], class_subject: doc["class_subject"], is_teacher: false } }}, (err, raw) =>{
+                    console.log(raw);
                     console.log(err);
                 });
                 res.end(JSON.stringify({success: true, msg:"Student added to class", callback:"/class/"+doc["class_id"]}));

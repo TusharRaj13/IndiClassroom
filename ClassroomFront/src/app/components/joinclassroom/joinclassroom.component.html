@@ -1,10 +1,16 @@
-<h2>joinclassroom </h2>
+<div>
+  <form class="form_style" (submit)="joinClassroom(code.value)">
+    <div class="form-group">
+      <label>Invite Code</label>
+      <input class="form-control" type="text" name="code" #code>
+    </div>
 
-<form #form (submit)="joinClassroom(code.value)">
+    <div>
+      <input type="submit" class="btn btn-primary">
+    </div>
 
-    <input type="text" name="code" #code>
-    
-    <input type="submit">
-    
-    </form>
+
+  </form>
+
+</div>
 

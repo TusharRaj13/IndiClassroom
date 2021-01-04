@@ -1,13 +1,24 @@
-<h2>Notice Board</h2>
-<div *ngIf="is_teacher">
-<button> + </button>
-</div>
+<div>
+  <h2>Notice Board</h2>
+  <div *ngIf="is_teacher">
+    <button (click)="createNotice()"> Create Notice </button>
+  </div>
 
-<div *ngFor="let n of notices">
-    <p> {{n.notice_text}} </p>
+  <div *ngFor="let n of notices">
+      <p> {{n.notice_text}} </p>
+  </div>
 
-
-
+  <div class="modal_container" id="mod1">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="model_title left"><h2>Create Notice</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+      </div>
+      <div class="page_container">
+        <app-createclassroom></app-createclassroom>
+      </div>
+    </div>
+  </div>
 </div>
 
 

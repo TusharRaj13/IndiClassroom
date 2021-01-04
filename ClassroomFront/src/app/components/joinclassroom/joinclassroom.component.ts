@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassroomFetcherService } from 'src/app/services/classroom-fetcher.service';
 
 @Component({
   selector: 'app-joinclassroom',
@@ -7,11 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinclassroomComponent implements OnInit {
 
-  constructor() { }
+  constructor(private classroomService: ClassroomFetcherService) { }
 
   ngOnInit(): void {
   }
-  joinClassroom(name){
-    console.log(name);
+  joinClassroom(code){
+    console.log(code);
+    let userinfo = JSON.parse(localStorage.getItem('user'));
+    this.classroomService.joinClassroom(code, userinfo["googleId"], userinfo["username"], userinfo["imageUrl"]).subscribe(
+      data => {
+        if(data['success']){
+          alert(data['msg']);
+        }
+        else
+        {
+          alert(data['msg']);
+        }
+      }
+    )
+
   }
 }
