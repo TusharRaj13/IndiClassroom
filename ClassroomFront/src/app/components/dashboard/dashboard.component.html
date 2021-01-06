@@ -1,18 +1,21 @@
 <div>
-  <div class="head">
+  <div class="pagehead">
+    <h3>Dashboard</h3>
+    <div class="pageactions">
       <button class="btn btn-dark" (click)="createClass()" id="c1">Create</button>
       <button class="btn btn-dark" (click)="joinClass()" id="j1">Join</button>
+    </div>
   </div>
 
-  <div>
-      <div class="classcollection">
-          <div class="classobject" *ngFor="let c of user.classes">
-              <a routerLink="/class/{{c.class_id}}">
-                  <h3>{{ c.class_name }}</h3>
-                  <h5> {{ c.class_subject }} </h5>
-              </a>
-          </div>
-      </div>
+  <div class="container">
+    <div class="classCollection">
+      <a class="classObject zi3 dlevel3" routerLink="/class/{{c.class_id}}" *ngFor="let c of user.classes">
+        <div>
+          <h3>{{ c.class_name }}</h3>
+          <h5> {{ c.class_subject }} </h5>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div class="modal_container" id="mod1">

@@ -11,6 +11,10 @@
   padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ccc;
+  transition: 0.2s;
+}
+.memberobj:hover{
+  background: #222;
 }
 .memberobj h5{
   align-items: center;

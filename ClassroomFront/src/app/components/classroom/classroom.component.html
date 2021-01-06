@@ -1,9 +1,12 @@
 <div>
-    <nav>
+    <div class="pagehead">
+      <h3>{{classinfo.class_name}}</h3>
+      <div class="pageactions">
         <a class="btn btn-dark" routerLink="./assignment">Assignment</a>
         <a class="btn btn-dark" routerLink="./quiz">Quiz</a>
         <a class="btn btn-dark" routerLink="./attendance">Attendance</a>
-    </nav>
+      </div>
+    </div>
     <div class="hori-container">
       <div *ngIf="infoloaded">
         <app-noticeboard></app-noticeboard>
@@ -13,11 +16,13 @@
       </div>
       <div>
           <h4>Members</h4>
-          <div class="memberobj dlevel3" *ngFor="let c of classinfo.class_teacher">
+          <h5>Teachers</h5>
+          <div class="memberobj" *ngFor="let c of classinfo.class_teacher">
               <img src="{{ c.userimage }}" class="rounded-circle">
               <h5>{{ c.username }}</h5>
           </div>
-          <div class="memberobj dlevel3" *ngFor="let c of classinfo.class_students">
+          <h5>Students</h5>
+          <div class="memberobj" *ngFor="let c of classinfo.class_students">
               <img src="{{ c.userimage }}" class="rounded-circle">
               <h5>{{ c.username }}</h5>
           </div>

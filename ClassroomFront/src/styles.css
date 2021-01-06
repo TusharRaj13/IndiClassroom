@@ -2,7 +2,7 @@
 body{
   background-color: #121212;
 }
-h1, h2, h3, h4, h5, p, label{
+h1, h2, h3, h4, h5, h6, p, label{
   color: white;
 }
 /*Text-Alignment*/
@@ -29,28 +29,28 @@ h1, h2, h3, h4, h5, p, label{
 .dlevel4:hover{box-shadow: 0px 16px 32px 0px #5a5a5a; transition: 200ms;}
 
 
-.zi0{box-shadow:  0 0.1px 0.4px 0 rgba(0, 0, 0, 0.4), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.38); transition: 250s ease;}
+.zi0{box-shadow:  0 0.1px 0.4px 0 rgba(40, 40, 40, 0.4), 0 0.1px 0.3px 0 rgba(40, 40, 40, 0.38); transition: 250s ease;}
 .zi1{
-    box-shadow:  0 0.4px 1px 0 rgba(0, 0, 0, 0.4), 0 0.3px 1px 0 rgba(0, 0, 0, 0.38);
+    box-shadow:  0 0.4px 1px 0 rgba(40, 40, 40, 0.4), 0 0.3px 1px 0 rgba(40, 40, 40, 0.38);
     transition: 250ms ease;
 }
 .zi2{
-    box-shadow:  0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 2px 6px 0 rgba(0, 0, 0, 0.38);
+    box-shadow:  0 2px 4px 0 rgba(40, 40, 40, 0.4), 0 2px 6px 0 rgba(40, 40, 40, 0.38);
     transition: 250ms ease;
 }
 .zi3{
-    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 4px 12px 0 rgba(0, 0, 0, 0.38);
+    box-shadow:  0 4px 8px 0 rgba(40, 40, 40, 0.4), 0 4px 12px 0 rgba(40, 40, 40, 0.38);
     transition: 250ms ease;
 }
 .zi4{
-    box-shadow:  0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 8px 24px 0 rgba(0, 0, 0, 0.38);
+    box-shadow:  0 8px 16px 0 rgba(40, 40, 40, 0.4), 0 8px 24px 0 rgba(40, 40, 40, 0.38);
     transition: 250ms ease;
 }
-.zi:hover{box-shadow:  0.4px 0 1px 0 rgba(0, 0, 0, 0.4), 0 0.4px 1.5px 0 rgba(0, 0, 0, 0.38); transition: 250ms;}
-.zi1:hover{box-shadow:  1.5px 0 3px 0 rgba(0, 0, 0, 0.4), 0 1.5px 4.5px 0 rgba(0, 0, 0, 0.38); transition: 250ms;}
-.zi2:hover{box-shadow:  3px 0 6px 0 rgba(0, 0, 0, 0.4), 0 3px 9px 0 rgba(0, 0, 0, 0.38); transition: 250ms;}
-.zi3:hover{box-shadow:  6px 0 12px 0 rgba(0, 0, 0, 0.4), 0 4px 12px 0 rgba(0, 0, 0, 0.38); transition: 250ms;}
-.zi4:hover{box-shadow:  12px 0 24px 0 rgba(0, 0, 0, 0.4), 0 6px 18px 0 rgba(0, 0, 0, 0.38); transition: 250ms;}
+.zi:hover{box-shadow:  0.4px 0 1px 0 rgba(40, 40, 40, 0.4), 0 0.4px 1.5px 0 rgba(40, 40, 40, 0.38); transition: 250ms;}
+.zi1:hover{box-shadow:  1.5px 0 3px 0 rgba(40, 40, 40, 0.4), 0 1.5px 4.5px 0 rgba(40, 40, 40, 0.38); transition: 250ms;}
+.zi2:hover{box-shadow:  3px 0 6px 0 rgba(40, 40, 40, 0.4), 0 3px 9px 0 rgba(40, 40, 40, 0.38); transition: 250ms;}
+.zi3:hover{box-shadow:  6px 0 12px 0 rgba(40, 40, 40, 0.4), 0 4px 12px 0 rgba(40, 40, 40, 0.38); transition: 250ms;}
+.zi4:hover{box-shadow:  12px 0 24px 0 rgba(40, 40, 40, 0.4), 0 6px 18px 0 rgba(40, 40, 40, 0.38); transition: 250ms;}
 
 /*Colors*/
 .transparent{background: transparent; color:#232323;}
@@ -121,4 +121,12 @@ h1, h2, h3, h4, h5, p, label{
 .form_style{
   max-width: 300px;
   margin: 50px auto;
+}
+.pagehead {
+  display: flex;
+  justify-content:space-between;
+  height: 4em;
+  border-bottom: 2px solid gray;
+  padding: 0px 50px;
+  align-items: center;
 }

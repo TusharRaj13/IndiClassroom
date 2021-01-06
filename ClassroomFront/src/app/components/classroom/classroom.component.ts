@@ -11,7 +11,7 @@ export class ClassroomComponent implements OnInit {
 
   classid:string;
   infoloaded:boolean = false;
-  classinfo = { class_teacher: [], class_students: [] };
+  classinfo = { class_name: "", class_teacher: [], class_students: [] };
 
   constructor(private classroom:ClassroomFetcherService,
     private router:ActivatedRoute) { }
@@ -25,6 +25,7 @@ export class ClassroomComponent implements OnInit {
     {
       if(JSON.parse(localStorage.getItem('classinfo'))["class_id"] == this.classid){
         this.infoloaded = true;
+        this.classinfo = JSON.parse(localStorage.getItem('classinfo'));
       }
       else
       {

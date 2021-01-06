@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NoticeFetcherService } from 'src/app/services/notice-fetcher.service';
 
 @Component({
   selector: 'app-noticeboard',
@@ -11,7 +12,8 @@ export class NoticeboardComponent implements OnInit {
   notices: any[];
   classid: string;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute,
+    private noticeFetcher:NoticeFetcherService) {}
 
   ngOnInit(): void {
     let userinfo = JSON.parse(localStorage.getItem('user'));
@@ -41,6 +43,18 @@ export class NoticeboardComponent implements OnInit {
           this.is_teacher = true;
         }
       });
+      this.noticeFetcher.getClassNotice(this.classid).subscribe(
+        data => {
+          if(data['success'])
+          {
+            this.notices = data['data'];
+          }
+          else
+          {
+            alert(data['msg']);
+          }
+        }
+      )
       console.log(this.classid);
     });
   }

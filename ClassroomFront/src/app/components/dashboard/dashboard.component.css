@@ -1,32 +1,29 @@
-.head {
-    display: flex;
-    justify-content:center;
-    height: 4em;
-    border-bottom: 2px solid gray;
-    align-items: center;
-}
-
 #c1, #j1 {
     text-decoration-color: whitesmoke;
     font-family: 'Times New Roman', Times, serif;
     width: 100px;
 }
 
-.classcollection{
-  display: flex;
-  flex-direction:row;
+.classCollection{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #111;
+  padding: 20px;
 }
 
-.classobject {
-    border: 2px solid red;
-    border-radius: 20px;
-    padding: 20px;
-    align-items: center;
-    justify-items: center;
-    min-height: 5em;
-}
-
-.classobject a{
+.classObject {
+  border-radius: 20px;
+  padding: 20px;
+  align-items: center;
+  justify-items: center;
+  min-height: 5em;
+  transition: 0.2s;
+  min-height: 200px;
+  cursor: pointer;
   text-decoration: none;
-
 }
+.classObject:hover{
+  background-color: #222;
+}
+

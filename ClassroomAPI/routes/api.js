@@ -261,12 +261,13 @@ router.get('/get_quiz/:id', (req,res) => {
 //Body JSON Example => { "userid": <googleid>, "classid": <classid>, "text": <notice text>, "expiry_date": <notice expiry date>, "type": <true/false> }
 router.post('/create_notice', (req,res) => {
    let json = req.body;
+   console.log(json);
    var classid = json["classid"];
    var userid = json["userid"];
    const newNotice = {
     notice_id: uuidv4(),   
     notice_classid: classid,
-    notice_useid: userid,
+    notice_userid: userid,
     notice_expiry: json["expiry_date"],
     notice_text: json["text"],
     notice_type: json["type"]          
