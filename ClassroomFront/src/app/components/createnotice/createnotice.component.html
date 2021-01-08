@@ -1,22 +1,18 @@
-<p>createnotice works!</p>
 <div>
 
- <form>
-    <div class="form-notice">
-      
-      <input type="text" class="form-control" id="notice">
+ <form class="form_style" (submit)="createNotice(notice.value, dt.value)">
+    <div class="form-group">
+      <label>Notice Text</label>
+      <textarea class="form-control" row="3" #notice></textarea>
     </div>
-     
+
+    <div class="form-group">
+      <label>Notice Expiry Date Time</label>
+      <input type="datetime-local" #dt class="form-control">
+    </div>
     <div>
-        <input type="datetime" name="dt">
-
+      <input type="submit" class="btn btn-primary" value="Create Notice">
     </div>
-    <div>
-
-
-    </div>
-    
-    
-   </form>
+  </form>
 </div>
 

@@ -1,11 +1,14 @@
 <div>
-  <h2>Notice Board</h2>
+  <h3>Notice Board</h3>
   <div *ngIf="is_teacher">
-    <button (click)="createNotice()"> Create Notice </button>
+    <button class="btn btn-primary" (click)="createNotice()"> Create Notice </button>
   </div>
 
-  <div *ngFor="let n of notices">
-      <p> {{n.notice_text}} </p>
+  <div>
+    <div class="noticeitem" *ngFor="let n of notices">
+      <h5> {{n.notice_text}} </h5>
+      <p> {{n.notice_created | date}}</p>
+    </div>
   </div>
 
   <div class="modal_container" id="mod1">
@@ -15,7 +18,7 @@
         <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
       </div>
       <div class="page_container">
-        <app-createclassroom></app-createclassroom>
+        <app-createnotice></app-createnotice>
       </div>
     </div>
   </div>
