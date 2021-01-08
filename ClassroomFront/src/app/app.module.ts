@@ -23,6 +23,8 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
+import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+
 
 
 
@@ -41,7 +43,8 @@ import { NoticeFetcherService } from './services/notice-fetcher.service';
     AssingmentComponent,
     AttendanceComponent,
     CreatenoticeComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    TakeAttendanceComponent
   ],
   imports: [
     BrowserModule,
