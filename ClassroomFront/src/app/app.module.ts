@@ -21,7 +21,10 @@ import { NavheaderComponent } from './components/navheader/navheader.component';
 import { AssingmentComponent } from './components/assingment/assingment.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
+import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+
 
 
 
@@ -39,7 +42,9 @@ import { NoticeFetcherService } from './services/notice-fetcher.service';
     NavheaderComponent,
     AssingmentComponent,
     AttendanceComponent,
-    CreatenoticeComponent
+    CreatenoticeComponent,
+    AboutUsComponent,
+    TakeAttendanceComponent
   ],
   imports: [
     BrowserModule,
