@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { SocialLoginModule, SocialAuthServiceConfig, SocialAuthService } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,11 @@ import { CreatenoticeComponent } from './components/createnotice/createnotice.co
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
 import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
+import { QuizFetcherService } from './services/quiz-fetcher.service';
+import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
+import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
 
 
 
@@ -44,7 +49,11 @@ import { TakeAttendanceComponent } from './components/take-attendance/take-atten
     AttendanceComponent,
     CreatenoticeComponent,
     AboutUsComponent,
-    TakeAttendanceComponent
+    TakeAttendanceComponent,
+    QuizComponent,
+    CreateQuizComponent,
+    QuizItemComponent,
+    TakeQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,8 @@ import { TakeAttendanceComponent } from './components/take-attendance/take-atten
     },
     BackendAuthService,
     ClassroomFetcherService,
-    NoticeFetcherService
+    NoticeFetcherService,
+    QuizFetcherService
   ],
   bootstrap: [AppComponent]
 })

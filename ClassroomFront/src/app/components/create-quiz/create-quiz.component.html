@@ -1,0 +1,188 @@
+<div>
+  <div class="pagehead">
+    <h3>Create Quiz</h3>
+  </div>
+  <div class="container">
+    <div class="form_container" *ngIf="step==0">
+      <form class="form_style" (submit)="saveInfo(name.value, date.value, duration.value, buffer.value)">
+        <h4>Quiz Info</h4>
+        <div class="form-group">
+          <label>Quiz Name</label>
+          <input class="form-control" type="text" #name required>
+        </div>
+        <div class="form-group">
+          <label>Quiz Start Time</label>
+          <input class="form-control" type="datetime-local" #date required>
+        </div>
+        <div class="form-group">
+          <label>Quiz Duration (in minutes)</label>
+          <input class="form-control" type="number" #duration required>
+        </div>
+        <div class="form-group">
+          <label>Quiz Buffer Time (in minutes)</label>
+          <input class="form-control" type="number" #buffer required>
+        </div>
+        <div>
+          <input type="submit" value="Save & Next" class="btn btn-primary">
+        </div>
+
+      </form>
+    </div>
+    <div class="qa_preview" *ngIf="step>0">
+      <div class="form_container" >
+        <h4>Question {{step}}</h4>
+        <div>
+          <table>
+            <tr>
+              <td><label>Step 1- Add Question Text</label></td>
+              <td><button class="btn btn-secondary" (click)="openQuestion()">Add Question Info</button></td>
+            </tr>
+            <tr>
+              <td><label>Step 2- Add Options (atleast 2)</label></td>
+              <td><button class="btn btn-secondary" (click)="openOption()">Add Options</button></td>
+            </tr>
+            <tr>
+              <td><label>Step 3- Add Question to Quiz</label></td>
+              <td><button class="btn btn-primary" (click)="addQuestionToQuiz()">Add Question to Quiz</button></td>
+            </tr>
+            <tr>
+              <td><h5>Question Checklist</h5></td>
+              <td><h5>Status</h5></td>
+            </tr>
+            <tr>
+              <td><p>Question Added</p></td>
+              <td>{{ newQuestion.question != "" ? "✔" : "❌" }}</td>
+            </tr>
+            <tr>
+              <td><p>Atleast 2 options added</p></td>
+              <td>{{ optionList.length > 1 ? "✔" : "❌" }}</td>
+            </tr>
+            <tr>
+              <td><p>Atleast 1 options is answer</p></td>
+              <td><p>{{ checkNumberOfAnswer() ? "✔" : "❌" }}</p></td>
+            </tr>
+          </table>
+        </div>
+        <button class="btn btn-success" (click)="viewQuiz()">View Quiz</button>
+      </div>
+      <div class="oppreview">
+        <div>
+          <h4>Question Preview</h4>
+          <!-- <div>
+            <button (click)="newQuestion()" class="btn btn-primary">Add Question</button>
+          </div> -->
+          <div>
+            <h6>Question {{ step }}: {{ newQuestion.question }}</h6>
+            <!-- <p>{{ newQuestion.question }}</p> -->
+          </div>
+          <div [ngClass]="{answerColor: item.is_answer}" class="optionObj" *ngFor="let item of optionList; let i=index">
+            <h6>Option {{ i+1 }}</h6>
+            <p>{{ item.option }}</p>
+            <button (click)="removeOption(item)" class="btn btn-danger">Delete</button>
+          </div>
+          <div *ngIf="optionList.length==0">
+            <p>No options added.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal_container" id="mod1">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="model_title left"><h2>Question</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+      </div>
+      <div class="page_container">
+        <div>
+          <form #qform (submit)="addQuestion(question.value, qform)">
+            <div class="form-group">
+              <label>Question</label>
+              <textarea class="form-control" rows="3" #question></textarea>
+            </div>
+            <div>
+              <input type="submit" class="btn btn-primary" value="Add Question">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal_container" id="mod2">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="model_title left"><h2>Add Option</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod2()">X</button>
+      </div>
+      <div class="page_container">
+        <div>
+          <form #opform (submit)="addOption(option.value, answer.checked, opform)">
+            <div class="form-group">
+              <label>Option {{ optionList.length + 1 }}</label>
+              <textarea class="form-control" rows="1" #option></textarea>
+            </div>
+            <div class="form-group">
+              <label>Is Answer? </label>
+              <input type="checkbox" #answer>
+            </div>
+            <div>
+              <input type="submit" class="btn btn-primary" value="Add Option">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal_container" id="mod3">
+    <div class="modal_content zi3">
+      <div class="dialogue_pane large12">
+        <div class="model_title left"><h2>Quiz Details</h2></div>
+        <button class="primary_red right ta_center mod_close_btn" (click)="closemod3()">X</button>
+      </div>
+      <div class="page_container">
+        <div>
+          <div class="pagehead">
+            <h3>Quiz preview</h3>
+            <div class="pageactions">
+              <button (click)="submitQuiz()" class="btn btn-primary">Submit Quiz</button>
+            </div>
+          </div>
+          <div>
+            <h5>Quiz Detail</h5>
+            <table>
+              <tr>
+                <td><p>Quiz Name</p></td>
+                <td><p>{{ newQuiz.name }}</p></td>
+              </tr>
+              <tr>
+                <td><p>Quiz Start Time</p></td>
+                <td><p>{{ newQuiz.startdate | date :'medium' }}</p></td>
+              </tr>
+              <tr>
+                <td><p>Quiz Duration</p></td>
+                <td><p>{{ newQuiz.duration }} minutes</p></td>
+              </tr>
+              <tr>
+                <td><p>Quiz Buffer</p></td>
+                <td><p>{{ newQuiz.buffertime }} minutes</p></td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <h5>Questions</h5>
+            <div class="quesObj" *ngFor="let q of newQuiz.questions; let i = index">
+              <p>Question {{ i+1 }} : {{ q.question }}</p>
+              <div class="optionObj" [ngClass]="{answerColor: o.is_answer}" *ngFor="let o of q.options; let j = index">
+                <p>Option {{ j+1 }} : {{ o.option }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

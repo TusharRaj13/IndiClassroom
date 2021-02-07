@@ -30,7 +30,8 @@ const QuestionSchema = new mongoose.Schema({
     //question_type = Single Choice = 0 , Multiple choice = 1
     question_type:{
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     question_options:[ OptionSchema ],
     question_answers:[ AnswerSchema ]

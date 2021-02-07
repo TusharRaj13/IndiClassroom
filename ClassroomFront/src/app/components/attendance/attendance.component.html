@@ -1,15 +1,7 @@
-<div>
+<div class="container">
     <div>
-
-        <h2>Attendance</h2>
-
-
-        <button class="btn btn-dark" (click)="take()"> Take Attendance</button>
-        <app-take-attendance></app-take-attendance>
-
       <h2>Attendance</h2>
-      <button class="btn btn-dark" (click)="take()"> take attendance</button>
-
+      <button class="btn btn-dark" (click)="take()">Take Attendance</button>
     </div>
 
 
@@ -23,6 +15,18 @@
 
         <p> Only Student Attendance</p>
 
+    </div>
+
+    <div class="modal_container" id="mod1">
+      <div class="modal_content zi3">
+        <div class="dialogue_pane large12">
+          <div class="model_title left"><h2>Take Attendance</h2></div>
+          <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+        </div>
+        <div class="page_container">
+          <app-take-attendance></app-take-attendance>
+        </div>
+      </div>
     </div>
 
 </div>

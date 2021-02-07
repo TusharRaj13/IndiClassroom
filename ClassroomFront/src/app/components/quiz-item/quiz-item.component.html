@@ -1,0 +1,11 @@
+<a class="quizObjCon" routerLink="./{{quiz.quiz_id}}">
+  <div class="quizObj">
+    <div>
+      <h4>{{ quiz.quiz_name }}</h4>
+      <p>{{ quiz.quiz_start_datetime | date:'medium' }}</p>
+    </div>
+    <div>
+      <h2 class="timerTxt">{{ time }}</h2>
+    </div>
+  </div>
+</a>

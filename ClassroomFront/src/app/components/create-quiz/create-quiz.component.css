@@ -1,0 +1,17 @@
+.optionObj{
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.quesObj{
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+.answerColor{
+  background-color: green;
+}
+.qa_preview{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}

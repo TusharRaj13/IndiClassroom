@@ -10,6 +10,7 @@ const Attendance = require('../models/Attendance');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const router = express.Router();
 
+
 //Login (method: get, path:/api/login)
 router.get('/login', (req, res) => {
     res.end(JSON.stringify({ success : false, msg: "Cannot get /api/login" }));
@@ -195,7 +196,7 @@ router.post('/join_invitecode/:code', (req,res) => {
                     console.log(raw);
                     console.log(err);
                 });
-                res.end(JSON.stringify({success: true, msg:"Student added to class", callback:"/class/"+doc["class_id"]}));
+                res.end(JSON.stringify({success: true, msg:"Student added to class", callback:"/class/"+doc["class_id"], data: doc}));
             }
         }
         else
@@ -212,18 +213,20 @@ router.post('/create_quiz', (req,res) => {
     console.log('/create_quiz');
     let json = req.body;
     let id = uuidv4();
+    
     var question_list = json["data"]["questions"];
+    // console.log(json["class_id"]);
     var question_model = new Array();
-    question_list.array.forEach(element => {
+    for(var element of question_list){
         var option_list = element["options"];
         var option_model = new Array();
         var answer_model = new Array();
-        option_list.array.forEach(element1 => {
+        for(var element1 of option_list) {
             var op_id = (Math.random()*200000000000).toString(36).split('.')[0];
             option_model.push({ option_id: op_id, option_text: element1.option });
             if(element1.is_answer)
                 answer_model.push({ option_id: op_id });
-        });
+        }
         var question = {
             question_id : (Math.random()*200000000000).toString(36).split('.')[0],
             question_text : element["question"],
@@ -232,7 +235,7 @@ router.post('/create_quiz', (req,res) => {
             question_answers : answer_model
         }
         question_model.push(question);
-    });
+    }
     var quiz_item = {
         quiz_id: id,
         quiz_classid: json["class_id"],
@@ -256,6 +259,17 @@ router.get('/get_quiz/:id', (req,res) => {
             res.end(json.stringify({success:false, msg:"Quiz not found"}));
     });
 });
+
+//Get Quiz of Class(method:get, path: /api/qet_class_quiz/<classid>, body: not required)
+router.get('/get_class_quiz/:id', (req,res) => {
+    let id = req.params.id;
+    Quiz.find({quiz_classid: id}, (err, doc) => {
+        if(doc)
+            res.end(JSON.stringify({success:true, msg:"Quizzes of class", data:doc}));
+        else
+            res.end(JSON.stringify({success:false, msg:"Quiz not found"}));
+    })
+})
 
 //Create Post in notice board (method:post, path:/api/create_notice, body: google_id & class_id)
 //Body JSON Example => { "userid": <googleid>, "classid": <classid>, "text": <notice text>, "expiry_date": <notice expiry date>, "type": <true/false> }
@@ -342,7 +356,10 @@ router.post('/create_attendance/:id', async (req,res) => {
             attend_id: uid,
             attend_list: json["data"]
         };
-        Attendance.updateOne({ attend_classid: id }, { $push: { attend_days : newSheet } });
+        Attendance.updateOne({ attend_classid: id }, { $push: { attend_days : newSheet } }, (err, raw) => {
+            console.log(err);
+            console.log(raw);
+        });
         res.end(JSON.stringify({success: true, msg: "Added Sheet" }));
     }
     else

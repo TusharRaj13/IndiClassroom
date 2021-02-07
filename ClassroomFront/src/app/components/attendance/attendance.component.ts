@@ -13,7 +13,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   take(){
-    
+    document.getElementById('mod1').style.display = "block";
+  }
+  closemod1(){
+    document.getElementById('mod1').style.display = "none";
   }
 
 }
