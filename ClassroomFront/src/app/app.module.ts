@@ -22,6 +22,9 @@ import { AssingmentComponent } from './components/assingment/assingment.componen
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
+import { ListattendanceComponent } from './components/listattendance/listattendance.component';
+import { AttendanceFetcherService } from './services/attendance-fetcher.service';
+import { Listattendance2Component } from './listattendance2/listattendance2.component';
 
 
 
@@ -39,7 +42,9 @@ import { NoticeFetcherService } from './services/notice-fetcher.service';
     NavheaderComponent,
     AssingmentComponent,
     AttendanceComponent,
-    CreatenoticeComponent
+    CreatenoticeComponent,
+    ListattendanceComponent,
+    Listattendance2Component
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,8 @@ import { NoticeFetcherService } from './services/notice-fetcher.service';
     },
     BackendAuthService,
     ClassroomFetcherService,
-    NoticeFetcherService
+    NoticeFetcherService,
+    AttendanceFetcherService
   ],
   bootstrap: [AppComponent]
 })

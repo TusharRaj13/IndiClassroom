@@ -4,6 +4,7 @@ import { ClassroomComponent } from './components/classroom/classroom.component';
 import { CreateclassroomComponent } from './components/createclassroom/createclassroom.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { ListattendanceComponent } from './components/listattendance/listattendance.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path:"login", component: LoginComponent },
   { path:"dashboard", component: DashboardComponent},
   { path:"class/:id", component: ClassroomComponent},
-  { path:"test", component: CreateclassroomComponent},
+  { path:"test", component: ListattendanceComponent},
   { path:"**", component:PageNotFoundComponent }
 ];
 
