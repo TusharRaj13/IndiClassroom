@@ -299,13 +299,17 @@ router.post('/create_post', (req, res) => {
 //Body JSON Example => { "userid": <googleid>, "postid": <postid>, "text": <post_text> }
 router.post('/create_post_reply', (req, res) => {
     let json = req.body;
+    console.log(json);
     let id = uuidv4();
     const newFeedReply = {
         post_reply_id: id,
         post_reply_text: json["text"],
         post_reply_userid: json["userid"]
     }
-    Feed.updateOne({ post_id: json["postid"] }, { $push: { post_replies: newFeedReply } });
+    Feed.updateOne({ post_id: json["postid"] }, { $push: { post_replies: newFeedReply } }, (err, doc) => {
+        console.log(err);
+        console.log(doc);
+    });
     res.end(JSON.stringify({ success: true, msg: "Reply created", data: newFeedReply }));
 });
 

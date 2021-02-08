@@ -1,1 +1,29 @@
-.feeditem {}
+.feeditem {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    border: 1px solid burlywood;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 1.4em;
+}
+
+.replyitem {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    border: 1px solid burlywood;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 1.4em;
+}
