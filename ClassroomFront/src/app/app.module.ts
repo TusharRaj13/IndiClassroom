@@ -24,6 +24,10 @@ import { CreatenoticeComponent } from './components/createnotice/createnotice.co
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
 import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+import { FeedsComponent } from './feeds/feeds.component';
+import { FeedFetcherService } from './services/feed-fetcher.service';
+import { CreatefeedComponent } from './createfeed/createfeed.component';
+import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.component'
 
 
 
@@ -44,7 +48,10 @@ import { TakeAttendanceComponent } from './components/take-attendance/take-atten
     AttendanceComponent,
     CreatenoticeComponent,
     AboutUsComponent,
-    TakeAttendanceComponent
+    TakeAttendanceComponent,
+    FeedsComponent,
+    CreatefeedComponent,
+    CreatefeedreplyComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,8 @@ import { TakeAttendanceComponent } from './components/take-attendance/take-atten
     },
     BackendAuthService,
     ClassroomFetcherService,
-    NoticeFetcherService
+    NoticeFetcherService,
+    FeedFetcherService
   ],
   bootstrap: [AppComponent]
 })

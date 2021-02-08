@@ -1,18 +1,17 @@
 <div>
 
- <form class="form_style" (submit)="createNotice(notice.value, dt.value)">
-    <div class="form-group">
-      <label>Notice Text</label>
-      <textarea class="form-control" row="3" #notice></textarea>
-    </div>
+    <form class="form_style" (submit)="createNotice(notice.value, dt.value)">
+        <div class="form-group">
+            <label>Notice Text</label>
+            <textarea class="form-control" row="3" #notice></textarea>
+        </div>
 
-    <div class="form-group">
-      <label>Notice Expiry Date Time</label>
-      <input type="datetime-local" #dt class="form-control">
-    </div>
-    <div>
-      <input type="submit" class="btn btn-primary" value="Create Notice">
-    </div>
-  </form>
+        <div class="form-group">
+            <label>Notice Expiry Date Time</label>
+            <input type="datetime-local" #dt class="form-control">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Create Notice">
+        </div>
+    </form>
 </div>
-

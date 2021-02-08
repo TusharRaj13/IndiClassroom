@@ -1,0 +1,50 @@
+<div>
+    <h3>Feeds</h3>
+    <div>
+        <button class="btn btn-primary" (click)="createFeed()">Create Feed</button>
+    </div>
+    <div>
+        <div class="feeditem" *ngFor="let n of feeds">
+            <p> {{n.feed_text}} </p>
+        </div>
+    </div>
+    <div class="modal_container" id="mod3">
+        <div class="modal_content zi3">
+            <div class="dialouge_pane large12">
+                <div class="model_title left">
+                    <h2>Create Feed</h2>
+                </div>
+                <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+            </div>
+            <div class="page_container">
+                <app-createfeed></app-createfeed>
+            </div>
+            <div>
+                <div class="feeditem" *ngFor="let n of feeds">
+                    <p> {{n.feed_text}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" (click)="createFeedReply()">Create Feed Reply</button>
+    </div>
+    <div class="modal_container" id="mod4">
+        <div class="modal_content zi3">
+            <div class="dialouge_pane large12">
+                <div class="model_title left">
+                    <h2>Create Feed Reply</h2>
+                </div>
+                <button class="primary_red right ta_center mod_close_btn" (click)="closemod2()">X</button>
+            </div>
+            <div class="page_container">
+                <app-createfeedreply></app-createfeedreply>
+                <div>
+                    <div class="feeditem" *ngFor="let n of feeds">
+                        <p> {{n.feed_text}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
