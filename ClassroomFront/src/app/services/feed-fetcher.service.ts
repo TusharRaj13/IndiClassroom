@@ -19,6 +19,6 @@ export class FeedFetcherService {
     return this.http.post(`http://localhost:3000/api/create_post_reply`, body, headers);
   }
   getClassFeed(classid: string) {
-    return this.http.get(`http://localhost:3000/api/get_feed/${classid}`);
+    return this.http.get(`http://localhost:3000/api/get_feeds/${classid}`);
   }
 }

@@ -16,22 +16,24 @@ export class FeedsComponent implements OnInit {
 
   ngOnInit(): void {
     let userinfo = JSON.parse(localStorage.getItem('user'));
-    let classinfo = JSON.parse(localStorage.getItem('claasinfo'));
+    let classinfo = JSON.parse(localStorage.getItem('classinfo'));
     this.router.params.subscribe((params) => {
       this.classid = params['id'];
-      classinfo['class_id'].forEach(items => {
-        if (items['userid'] == userinfo['googleId']) {
-          console.log(items);
+     /*  classinfo['classid'].forEach(elements => {
+        if(elements['userid'] == userinfo['googleId']) {
+          console.log(elements);
         }
-      });
+      }); */
       this.feedFetcher.getClassFeed(this.classid).subscribe(data => {
         if (data['success']) {
           this.feeds = data['data'];
         }
-        else {
+        else
+        {
           alert(data['msg']);
         }
-      })
+      }
+      )
       console.log(this.classid);
     });
     
@@ -39,13 +41,13 @@ export class FeedsComponent implements OnInit {
   createFeed() {
     document.getElementById('mod3').style.display = "block";
   }
-  closemod1() {
+  closemod2() {
     document.getElementById('mod3').style.display = "none";
   }
   createFeedReply() {
     document.getElementById('mod4').style.display = "block";
   }
-  closemod2() {
+  closemod3() {
     document.getElementById('mod4').style.display = "none";
   }
 }
