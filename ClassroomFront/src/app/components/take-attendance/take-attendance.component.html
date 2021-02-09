@@ -1,0 +1,8 @@
+<form>
+    <div class="attendance_card" *ngFor="let c of classinfo.class_students">
+        <img src="{{ c.userimage }}" class="rounded-circle">
+        <h5>{{ c.username }}</h5>
+        <input type="checkbox" (change)="OnToggle($event)" value="{{ c.userid }}">
+    </div>
+    <input type="button" class="btn btn-primary" (click)="OnSubmit()" value="Submit">
+</form>

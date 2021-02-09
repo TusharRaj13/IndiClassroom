@@ -1,0 +1,15 @@
+.attendance_card{
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  justify-content: space-between;
+}
+.attendance_card:hover{
+  background-color: #777;
+}
+.attendance_card img{
+  max-width: 30px;
+  max-height: 30px;
+}

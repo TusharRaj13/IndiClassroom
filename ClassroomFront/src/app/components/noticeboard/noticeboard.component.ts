@@ -14,7 +14,7 @@ export class NoticeboardComponent implements OnInit {
 
   constructor(private router: ActivatedRoute,
     private noticeFetcher:NoticeFetcherService) {}
-
+   
   ngOnInit(): void {
     let userinfo = JSON.parse(localStorage.getItem('user'));
     let classinfo = JSON.parse(localStorage.getItem('classinfo'));
@@ -47,7 +47,13 @@ export class NoticeboardComponent implements OnInit {
         data => {
           if(data['success'])
           {
-            this.notices = data['data'];
+            console.log("Notice Length= " + data['data'].length);
+            data['data'].forEach(element => {
+              //check for expiration
+              var time = new Date(element.notice_expiry).getTime() - new Date().getTime();
+              if(time > 0)
+                this.notices.push(element);
+            });
           }
           else
           {

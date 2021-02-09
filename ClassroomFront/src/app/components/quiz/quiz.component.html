@@ -1,0 +1,22 @@
+<div>
+  <div class="pagehead">
+    <h3>Quiz</h3>
+    <div class="pageactions">
+      <a class="btn btn-dark" routerLink="./create">Create Quiz</a>
+    </div>
+  </div>
+  <div class="container">
+    <div *ngIf="upcomingquiz.length > 0">
+      <h3>Upcoming Quiz</h3>
+      <app-quiz-item *ngFor="let item of upcomingquiz" [quiz]="item"></app-quiz-item>
+    </div>
+    <div *ngIf="ongoingquiz.length > 0">
+      <h3>Ongoing Quiz</h3>
+      <app-quiz-item *ngFor="let item of ongoingquiz" [quiz]="item"></app-quiz-item>
+    </div>
+    <div *ngIf="endedquiz.length > 0">
+      <h3>Ended Quiz</h3>
+      <app-quiz-item *ngFor="let item of endedquiz" [quiz]="item"></app-quiz-item>
+    </div>
+  </div>
+</div>

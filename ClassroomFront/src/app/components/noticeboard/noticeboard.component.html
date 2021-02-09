@@ -1,27 +1,26 @@
 <div>
-  <h3>Notice Board</h3>
-  <div *ngIf="is_teacher">
-    <button class="btn btn-primary" (click)="createNotice()"> Create Notice </button>
-  </div>
-
-  <div>
-    <div class="noticeitem" *ngFor="let n of notices">
-      <h5> {{n.notice_text}} </h5>
-      <p> {{n.notice_created | date}}</p>
+    <h3>Notice Board</h3>
+    <div *ngIf="is_teacher">
+        <button class="btn btn-primary" (click)="createNotice()"> Create Notice </button>
     </div>
-  </div>
-
-  <div class="modal_container" id="mod1">
-    <div class="modal_content zi3">
-      <div class="dialogue_pane large12">
-        <div class="model_title left"><h2>Create Notice</h2></div>
-        <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
-      </div>
-      <div class="page_container">
-        <app-createnotice></app-createnotice>
-      </div>
+    <div>
+        <div class="noticeitem" *ngFor="let n of notices">
+            <h5> {{n.notice_text}} </h5>
+            <p> {{n.notice_created | date}}</p>
+        </div>
     </div>
-  </div>
+
+    <div class="modal_container" id="mod1">
+        <div class="modal_content zi3">
+            <div class="dialogue_pane large12">
+                <div class="model_title left">
+                    <h2>Create Notice</h2>
+                </div>
+                <button class="primary_red right ta_center mod_close_btn" (click)="closemod1()">X</button>
+            </div>
+            <div class="page_container">
+                <app-createnotice></app-createnotice>
+            </div>
+        </div>
+    </div>
 </div>
-
-
