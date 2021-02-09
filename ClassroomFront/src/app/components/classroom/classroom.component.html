@@ -1,32 +1,34 @@
 <div>
     <div class="pagehead">
-      <h3>{{classinfo.class_name}}</h3>
-      <div class="pageactions">
-        <a class="btn btn-dark" routerLink="./assignment">Assignment</a>
-        <a class="btn btn-dark" routerLink="./quiz">Quiz</a>
-        <a class="btn btn-dark" routerLink="./attendance">Attendance</a>
-      </div>
+        <h3>{{classinfo.class_name}}</h3>
+        <div class="pageactions">
+            <a class="btn btn-dark" routerLink="./assignment">Assignment</a>
+            <a class="btn btn-dark" routerLink="./quiz">Quiz</a>
+            <a class="btn btn-dark" routerLink="./attendance">Attendance</a>
+        </div>
     </div>
     <div class="hori-container">
-      <div *ngIf="infoloaded">
-        <app-noticeboard></app-noticeboard>
-      </div>
-      <div>
-          <h4>Feeds</h4>
-      </div>
-      <div>
-          <h4>Members</h4>
-          <h5>Teachers</h5>
-          <div class="memberobj" *ngFor="let c of classinfo.class_teacher">
-              <img src="{{ c.userimage }}" class="rounded-circle">
-              <h5>{{ c.username }}</h5>
-          </div>
-          <h5>Students</h5>
-          <div class="memberobj" *ngFor="let c of classinfo.class_students">
-              <img src="{{ c.userimage }}" class="rounded-circle">
-              <h5>{{ c.username }}</h5>
-          </div>
-      </div>
+        <div *ngIf="infoloaded">
+            <app-noticeboard></app-noticeboard>
+        </div>
+        <div class="hori-container">
+            <div *ngIf="infoloaded">
+                <app-feeds></app-feeds>
+            </div>
+        </div>
+        <div>
+            <h4>Members</h4>
+            <h5>Teachers</h5>
+            <div class="memberobj" *ngFor="let c of classinfo.class_teacher">
+                <img src="{{ c.userimage }}" class="rounded-circle">
+                <h5>{{ c.username }}</h5>
+            </div>
+            <h5>Students</h5>
+            <div class="memberobj" *ngFor="let c of classinfo.class_students">
+                <img src="{{ c.userimage }}" class="rounded-circle">
+                <h5>{{ c.username }}</h5>
+            </div>
+        </div>
     </div>
 
 </div>

@@ -1,0 +1,61 @@
+<div class="feed-container">
+    <h3>Feeds</h3>
+    <div>
+        <button class="btn btn-primary" (click)="createFeed()">Create Feed</button>
+    </div>
+    <div>
+        <div class="feeditem" *ngFor="let n of feeds">
+            <p> {{n.post_text}} </p>
+            <p> {{n.post_created | date:'medium'}} </p>
+            <button class="btn btn-primary" (click)="createFeedReply(n.post_id)">Reply</button>
+            <div *ngFor="let r of n.post_replies" class="replyitem">
+                <p>{{r.post_reply_text}}</p>
+                <p>{{r.post_reply_created | date:"medium"}}</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal_container" id="mod3">
+        <div class="modal_content zi3">
+            <div class="dialouge_pane large12">
+                <div class="model_title left">
+                    <h2>Create Feed</h2>
+                </div>
+                <button class="primary_red right ta_center mod_close_btn" (click)="closemod2()">X</button>
+            </div>
+            <div>
+                <app-createfeed></app-createfeed>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
+        <div class="feeditem" *ngFor="let n of feeds">
+            <p> {{n.post_reply_text}} </p>
+            <p> {{n.post_reply_created}} </p>
+        </div>
+    </div> -->
+    <div class="modal_container" id="mod4">
+        <div class="modal_content zi3">
+            <div class="dialouge_pane large12">
+                <div class="model_title left">
+                    <h2>Create Feed Reply</h2>
+                </div>
+                <button class="primary_red right ta_center mod_close_btn" (click)="closemod3()">X</button>
+            </div>
+            <div>
+                <div>
+                    <form class="form_style" (submit)="sendFeedReply(reply.value, post.value)">
+                        <div class="form-group">
+                            <input type="hidden" id="post" #post>
+                            <label>Feed Reply</label>
+                            <textarea class="form-control" row="3" #reply></textarea>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-primary" value="Create Feed Reply">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

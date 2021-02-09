@@ -14,7 +14,7 @@ export class NoticeboardComponent implements OnInit {
 
   constructor(private router: ActivatedRoute,
     private noticeFetcher:NoticeFetcherService) {}
-
+   
   ngOnInit(): void {
     let userinfo = JSON.parse(localStorage.getItem('user'));
     let classinfo = JSON.parse(localStorage.getItem('classinfo'));

@@ -24,11 +24,16 @@ import { CreatenoticeComponent } from './components/createnotice/createnotice.co
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
 import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+import { FeedsComponent } from './feeds/feeds.component';
+import { FeedFetcherService } from './services/feed-fetcher.service';
+import { CreatefeedComponent } from './createfeed/createfeed.component';
+import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
 import { QuizFetcherService } from './services/quiz-fetcher.service';
 import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
 import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
+
 
 
 
@@ -50,10 +55,14 @@ import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
     CreatenoticeComponent,
     AboutUsComponent,
     TakeAttendanceComponent,
+    FeedsComponent,
+    CreatefeedComponent,
+    CreatefeedreplyComponent,
     QuizComponent,
     CreateQuizComponent,
     QuizItemComponent,
     TakeQuizComponent
+
   ],
   imports: [
     BrowserModule,
@@ -80,6 +89,7 @@ import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
     BackendAuthService,
     ClassroomFetcherService,
     NoticeFetcherService,
+    FeedFetcherService,
     QuizFetcherService
   ],
   bootstrap: [AppComponent]
