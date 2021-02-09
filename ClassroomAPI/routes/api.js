@@ -7,6 +7,7 @@ const Quiz = require('../models/Quiz');
 const Notice = require('../models/Notice');
 const Feed = require('../models/Post');
 const Attendance = require('../models/Attendance');
+const QuizResponses = require('../models/QuizResponse');
 const { v1: uuidv1, v4: uuidv4 } = require('uuid');
 const router = express.Router();
 
@@ -268,8 +269,45 @@ router.get('/get_class_quiz/:id', (req,res) => {
             res.end(JSON.stringify({success:true, msg:"Quizzes of class", data:doc}));
         else
             res.end(JSON.stringify({success:false, msg:"Quiz not found"}));
+    });
+});
+
+//Set Responses of Quiz(method:post, path:/api/submit_response, body: required)
+//Body JSON Example => { "quiz_id":<quiz_id>, "student_id":<studentid>, "question_resp":<data>, "quiz_score":<score> }
+router.post('/submit_response', (req, res) => {
+    let json = req.body;
+    console.log(json);
+    try {
+        QuizResponses.create(json);
+        res.end(JSON.stringify({success:true, msg:"Quiz Submitted"}));
+    } catch (error) {
+        res.end(JSON.stringify({success:false, msg:"Error Submitting Quiz"}));
+    }
+});
+
+//Get Student Response(method:post, path:/api/get_student_response, body: student id and quiz_id)
+//Body JSON Example => { student_id: <student_Id>, quiz_id: <quiz_id }
+router.post('/get_student_response', (req, res) => {
+    let json = req.body;
+    QuizResponses.find({quiz_id: json["quiz_id"], student_id: json["student_id"]}, (err, doc) => {
+        if(doc)
+            res.end(JSON.stringify({success:true, msg:"Reponses Found", data:doc}));
+        else
+            res.end(JSON.stringify({success:false, msg:"Student Reponse not found"}));
+    });
+});
+
+//Get All Student(method:get, path:/api/get_students_responses/:id, body: not required)
+router.get('/get_students_responses/:id', (req, res) => {
+    let id = req.params.id;
+    QuizResponses.find({quiz_id:id}, (err, doc) => {
+        if(doc)
+            res.end(JSON.stringify({success:true, msg:"TQuiz results are here", data: doc}));
+        else
+            res.end(JSON.stringify({success:false, msg:"Quiz not found"}));
     })
-})
+});
+
 
 //Create Post in notice board (method:post, path:/api/create_notice, body: google_id & class_id)
 //Body JSON Example => { "userid": <googleid>, "classid": <classid>, "text": <notice text>, "expiry_date": <notice expiry date>, "type": <true/false> }

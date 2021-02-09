@@ -42,3 +42,4 @@ export class AnswerModel{
   constructor(public question_id:string,
     public answer_ids:string[]){}
 }
+
