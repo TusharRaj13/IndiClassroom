@@ -1,0 +1,20 @@
+.quizObjCon{
+  text-decoration: none;
+}
+.quizObj{
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quizObj:hover{
+  background-color: #555;
+}
+.timerTxt{
+  font-family: monospace;
+}

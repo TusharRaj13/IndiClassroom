@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { SocialLoginModule, SocialAuthServiceConfig, SocialAuthService } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +27,13 @@ import { TakeAttendanceComponent } from './components/take-attendance/take-atten
 import { FeedsComponent } from './feeds/feeds.component';
 import { FeedFetcherService } from './services/feed-fetcher.service';
 import { CreatefeedComponent } from './createfeed/createfeed.component';
-import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.component'
+import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { CreateQuizComponent } from './components/create-quiz/create-quiz.component';
+import { QuizFetcherService } from './services/quiz-fetcher.service';
+import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
+import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
+
 
 
 
@@ -51,7 +57,12 @@ import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.comp
     TakeAttendanceComponent,
     FeedsComponent,
     CreatefeedComponent,
-    CreatefeedreplyComponent
+    CreatefeedreplyComponent,
+    QuizComponent,
+    CreateQuizComponent,
+    QuizItemComponent,
+    TakeQuizComponent
+
   ],
   imports: [
     BrowserModule,
@@ -78,7 +89,8 @@ import { CreatefeedreplyComponent } from './createfeedreply/createfeedreply.comp
     BackendAuthService,
     ClassroomFetcherService,
     NoticeFetcherService,
-    FeedFetcherService
+    FeedFetcherService,
+    QuizFetcherService
   ],
   bootstrap: [AppComponent]
 })

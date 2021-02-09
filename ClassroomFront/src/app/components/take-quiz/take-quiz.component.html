@@ -1,0 +1,70 @@
+<div>
+  <!-- Quiz Detail & Status -->
+  <div *ngIf="!quiz_started">
+    <h3>{{ quizinfo.quiz_name }}</h3>
+    <h5>Quiz Duration = {{ quizinfo.quiz_duration }} minutes</h5>
+    <h5>{{ time }}</h5>
+  </div>
+  <!-- Quiz Forms -->
+  <div *ngIf="quiz_started">
+    <!-- <h1>QuizStarted</h1> -->
+
+    <!-- <h3 class="quiztimertxt">{{ timer }}</h3>
+    <div *ngFor="let ques of question_list; let i = index;">
+      <h5>Question {{i+1}} : {{ ques.question_text }}</h5>
+      <div *ngFor="let op of ques.question_options; let j = index;">
+        <p>Option {{j+1}} : {{ op.option_text }}</p>
+      </div>
+    </div> -->
+    <div>
+      <div class="pagehead">
+        <h3>{{ timer }}</h3>
+      </div>
+      <div class="container">
+        <h5>Question Number {{i+1}} : {{question_list[i].question_text}}</h5>
+        <div *ngFor="let op of question_list[i].question_options; let j = index;">
+          <p><input type="radio" name="ans" id="{{op.option_id}}"
+              [checked]="answer_list[i].answer_ids.indexOf(op.option_id) > -1" value="{{op.option_id}}"
+              (click)="setAnswer(question_list[i].question_id,op.option_id)">Option {{j+1}} : {{op.option_text}}</p>
+        </div>
+        <div>
+          <button class="btn btn-secondary" (click)="prevQues()" [disabled]="i==0">Prev</button>
+          <button class="btn btn-secondary" (click)="nextQues()" [disabled]="i==question_list.length-1">Next</button>
+          <button class="btn btn-primary" (click)="submitQuiz()" *ngIf="i==question_list.length-1">Submit Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="quiz_done">
+    <!-- Quiz Student Area -->
+    <div>
+      <button class="btn btn-primary" (click)="getResult()">Get Results</button>
+      <button class="btn btn-primary" (click)="getClassResult()">Get All Result</button>
+    </div>
+    <div *ngIf="!is_teacher">
+      <h2> Indivisual Score</h2>
+      <h5 id="indiscore"></h5>
+    </div>
+    <!-- Quiz Teacher Area  -->
+    <div>
+      <h2> Class Score List</h2>
+      <table id="classtable">
+        
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="dialogue_box" id="dialog1">
+    <div class="dialogue_pane large12">
+      <button class="primary_red right ta_center mod_close_btn" (click)="closedialog1()">X</button>
+    </div>
+    <div class="dialogue_content large12">Confirm quiz submission?
+      <div>
+        <button class="btn primary_red" (click)="autoSubmit()">Yes</button>
+        <button class="btn primary_green" (click)="closedialog1()">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>

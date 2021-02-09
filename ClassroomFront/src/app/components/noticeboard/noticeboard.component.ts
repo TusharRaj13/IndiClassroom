@@ -47,7 +47,13 @@ export class NoticeboardComponent implements OnInit {
         data => {
           if(data['success'])
           {
-            this.notices = data['data'];
+            console.log("Notice Length= " + data['data'].length);
+            data['data'].forEach(element => {
+              //check for expiration
+              var time = new Date(element.notice_expiry).getTime() - new Date().getTime();
+              if(time > 0)
+                this.notices.push(element);
+            });
           }
           else
           {

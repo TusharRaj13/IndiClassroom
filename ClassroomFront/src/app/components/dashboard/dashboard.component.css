@@ -14,7 +14,6 @@
 
 .classObject {
   border-radius: 20px;
-  padding: 20px;
   align-items: center;
   justify-items: center;
   min-height: 5em;
@@ -22,8 +21,21 @@
   min-height: 200px;
   cursor: pointer;
   text-decoration: none;
+  /*border-width: 5px;
+  border-style: solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom right, #ff3cac, #562b7c, #2b86c5);*/
 }
 .classObject:hover{
   background-color: #222;
+}
+.isTeacherObj{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  border-left: 2px solid red;
+}
+.classCon{
+  padding: 20px;
 }
 
