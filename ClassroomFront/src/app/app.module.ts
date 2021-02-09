@@ -23,6 +23,9 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { CreatenoticeComponent } from './components/createnotice/createnotice.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NoticeFetcherService } from './services/notice-fetcher.service';
+import { ListattendanceComponent } from './components/listattendance/listattendance.component';
+import { AttendanceFetcherService } from './services/attendance-fetcher.service';
+import { Listattendance2Component } from './listattendance2/listattendance2.component';
 import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { FeedFetcherService } from './services/feed-fetcher.service';
@@ -33,7 +36,6 @@ import { CreateQuizComponent } from './components/create-quiz/create-quiz.compon
 import { QuizFetcherService } from './services/quiz-fetcher.service';
 import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
 import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
-
 
 
 
@@ -53,6 +55,8 @@ import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
     AssingmentComponent,
     AttendanceComponent,
     CreatenoticeComponent,
+    ListattendanceComponent,
+    Listattendance2Component,
     AboutUsComponent,
     TakeAttendanceComponent,
     FeedsComponent,
@@ -89,6 +93,7 @@ import { TakeQuizComponent } from './components/take-quiz/take-quiz.component';
     BackendAuthService,
     ClassroomFetcherService,
     NoticeFetcherService,
+    AttendanceFetcherService,
     FeedFetcherService,
     QuizFetcherService
   ],
